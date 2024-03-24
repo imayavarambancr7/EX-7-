@@ -1,0 +1,185 @@
+/*
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/SubmitForm")
+public class SubmitFormServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+      
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+
+      
+        HttpSession session = request.getSession();
+        session.setAttribute("name", name);
+        session.setAttribute("email", email);
+
+      
+        response.setContentType("text/html");
+
+        
+        PrintWriter out = response.getWriter();
+
+
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Form Submission Success</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h2>Form Submission Success</h2>");
+        out.println("<p>Thank you, " + name + ", your information has been submitted!</p>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+}
+*/
+/*
+public class Product {
+    private String name;
+    private String description;
+    private double price;
+
+    // Constructor, getters, and setters
+    // Omitted for brevity
+}
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDatabase {
+    private static List<Product> products;
+
+    static {
+        // Initialize product list
+        products = new ArrayList<>();
+        products.add(new Product("Product 1", "Description of Product 1", 10.99));
+        products.add(new Product("Product 2", "Description of Product 2", 19.99));
+        products.add(new Product("Product 3", "Description of Product 3", 29.99));
+    }
+
+    public static List<Product> getAllProducts() {
+        return products;
+    }
+
+    public static Product getProductByName(String name) {
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                return product;
+            }
+        }
+        return null;
+    }
+}
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/ProductDetails")
+public class ProductDetailsServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String productName = request.getParameter("name");
+        Product product = ProductDatabase.getProductByName(productName);
+
+        if (product != null) {
+            request.setAttribute("product", product);
+            request.getRequestDispatcher("/productDetails.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("productList.jsp");
+        }
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h2>Product List</h2>
+    <ul>
+        <% 
+            for (Product product : (List<Product>) request.getAttribute("products")) {
+        %>
+            <li><a href="ProductDetails?name=<%= product.getName() %>"><%= product.getName() %></a></li>
+        <% } %>
+    </ul>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+</head>
+<body>
+    <h2>Product Details</h2>
+    <p>Name: <%= request.getAttribute("product").getName() %></p>
+    <p>Description: <%= request.getAttribute("product").getDescription() %></p>
+    <p>Price: <%= request.getAttribute("product").getPrice() %></p>
+</body>
+</html>
+*/
+/*
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="LoginServlet" method="post">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    // Hardcoded user credentials for demo purposes
+    private static final String VALID_EMAIL = "user@example.com";
+    private static final String VALID_PASSWORD = "password";
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Retrieve form parameters
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        // Check if the user exists (Simple check with hardcoded credentials)
+        if (email.equals(VALID_EMAIL) && password.equals(VALID_PASSWORD)) {
+            // Authentication successful, redirect to secure page
+            response.sendRedirect("secure-page.html");
+        } else {
+            // Authentication failed, redirect back to login form
+            response.sendRedirect("login.html");
+        }
+    }
+}
+*/
